@@ -11,22 +11,28 @@ class AccountTest {
 
 	@BeforeEach
 	void setUp() {
-		underTest = new Account("John Doe", 100.0D);
+		Name name = new Name("John Doe");
+		Amount amount = new Amount(100.0D);
+		underTest = new Account(name, amount);
 	}
 
 	@Test
 	public void itShouldAddMoneyToTheOriginalAmount() {
-		Double deposit = 50.0D;
+		Amount deposit = new Amount(50.0D);
 		underTest.deposit(deposit);
 
-		assertEquals("John Doe: 150.0 €", underTest.toString());
+		Amount expectedResult = new Amount(150.0D);
+
+		assertEquals(expectedResult, underTest.getAmount());
 	}
 
 	@Test
 	public void itShouldSubtractsMoneyToTheOriginalAmount() {
-		Double withdrawal = 20.50D;
+		Amount withdrawal = new Amount(20.50D);
 		underTest.withdrawal(withdrawal);
 
-		assertEquals("John Doe: 79.5 €", underTest.toString());
+		Amount expectedResult = new Amount(79.50D);
+
+		assertEquals(expectedResult, underTest.getAmount());
 	}
 }
