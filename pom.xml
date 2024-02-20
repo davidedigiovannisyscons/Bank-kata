@@ -11,10 +11,22 @@
 	<properties>
 		<maven.compiler.source>17</maven.compiler.source>
 		<maven.compiler.target>17</maven.compiler.target>
+		<junit.jupiter.version>5.8.1</junit.jupiter.version> <!-- Aggiunta della versione di JUnit 5 -->
 	</properties>
 
 	<dependencies>
-
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-api</artifactId>
+			<version>${junit.jupiter.version}</version> <!-- Dipendenza per JUnit 5 -->
+			<scope>test</scope> <!-- Indica che questa dipendenza è utilizzata solo durante i test -->
+		</dependency>
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-engine</artifactId>
+			<version>${junit.jupiter.version}</version> <!-- Dipendenza per JUnit 5 -->
+			<scope>test</scope> <!-- Indica che questa dipendenza è utilizzata solo durante i test -->
+		</dependency>
 	</dependencies>
 
 	<build>
