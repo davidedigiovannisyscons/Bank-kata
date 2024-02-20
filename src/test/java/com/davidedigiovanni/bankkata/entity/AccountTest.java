@@ -35,4 +35,19 @@ class AccountTest {
 
 		assertEquals(expectedResult, underTest.getAmount());
 	}
+
+	@Test
+	public void itShouldWithdrawalFromUnderTestAccountAndDepositToOtherAccount() {
+		Name otherName = new Name("Jane Doe");
+		Amount otherAmount = new Amount(250.0D);
+		Account otherAccount = new Account(otherName, otherAmount);
+		Amount amountToTransfer = new Amount(20.0D);
+		underTest.transfer(otherAccount, amountToTransfer);
+
+		Amount expectedUnderTestAmount = new Amount(80.0D);
+		Amount expectedOtherAccountAmount = new Amount(270.0D);
+
+		assertEquals(expectedUnderTestAmount, underTest.getAmount());
+		assertEquals(expectedOtherAccountAmount, otherAccount.getAmount());
+	}
 }
