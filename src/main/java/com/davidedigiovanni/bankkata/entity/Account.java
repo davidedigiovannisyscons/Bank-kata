@@ -5,17 +5,27 @@ public class Account {
 	private final Name name;
 	private final Amount amount;
 
-	public Account(String name, Double amount) {
-		this.name = new Name(name);
-		this.amount = new Amount(amount);
+	public Account(Name name, Amount amount) {
+		this.name = name;
+		this.amount = amount;
 	}
 
-	public void deposit(Double amount) {
-		this.amount.deposit(amount);
+	public Amount getAmount() {
+		return amount;
 	}
 
-	public void withdrawal(Double amount) {
-		this.amount.withdrawal(amount);
+	public void deposit(Amount deposit) {
+		Double actualAmount = amount.getValue();
+		Double depositAsDouble = deposit.getValue();
+		Double newAmount = actualAmount + depositAsDouble;
+		amount.setValue(newAmount);
+	}
+
+	public void withdrawal(Amount withdrawal) {
+		Double actualAmount = amount.getValue();
+		Double withdrawalAsDouble = withdrawal.getValue();
+		Double newAmount = actualAmount - withdrawalAsDouble;
+		amount.setValue(newAmount);
 	}
 
 	@Override
